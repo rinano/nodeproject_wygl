@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <head>
+        <meta charset="utf-8">
+        <title>小区物业信息管理</title>
+          <script src="/javascripts/angular.min.js"></script>
+          <script src="/javascripts/jquery.min.js"></script>
+          <script src="/javascripts/bootstrap.min.js"></script>
+          <script src="/controllers/adminnewctrl.js"></script>
+          <script src="/javascripts/wangEditor.min.js"></script>
+          <script src="/javascripts/ui-bootstrap-tpls-1.3.2.js"></script>
+          <script src="/javascripts/angular-locale_zh-cn.js"></script>
+          <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+          <link rel="stylesheet" href="/stylesheets/layoutit.css">
+          <style type="text/css">
+            body {
+              margin-left: 10%;
+              margin-right: 10%;
+             
+             background: url("/images/bg.jpg");
+             background-position: center 0; 
+             background-repeat: no-repeat;  
+             background-attachment: fixed; 
+             background-size: cover; 
+             -webkit-background-size: cover;  
+             -o-background-size: cover;  
+             -moz-background-size: cover;  
+             -ms-background-size: cover;
+         
+            }
+           </style>
+      </head>
+  </head>
+  <body>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"> 小区物业信息管理系统</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/">首页</a></li>
+                <li><a href="/admin">用户工单</a></li>
+                <li><a href="/viewuser">用户信息</a></li>
+                <li  class="active"><a href="/indexnews">新闻通知</a></li>
+                <li><a href="/logout">退出</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      <div ng-app="myApp" ng-controller="newctrl">
+        <div>
+          <form class="form-group" >
+            <h3></h3>
+              <div class="row">
+                  <div class="col-lg-8">
+                    <input type="text" class="form-control" placeholder="标题..." ng-model="new.addTitle" ng-focus="openEditor()">
+                  </div>
+                  <div class="col-lg-2">
+                    <div class="input-group">
+                  <!--  <input type="text" class="form-control" placeholder="时间..." ng-model="new.addDate"> -->
+                  <input type="text" class="form-control" uib-datepicker-popup="{{day}}" ng-model="new.addDate" is-open="popupDay.opened1" ng-required="true" close-text="关闭" clear-text="清空" current-text="今天" alt-input-formats="inputDay">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="openDay()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                  </div>
+                  </div>
+                  <div class="col-lg-1">
+                    <button class="btn btn-default" type="button" ng-click="addNew()" ng-hide="add" ng-disabled="new.addTitle == null">创建通知！</button>
+                    <button class="btn btn-default" type="button" ng-click="udNew(new._id)" ng-hide="ud" ng-disabled="new.addTitle == null">修改通知！</button>
+                  </div>
+                  <div class="col-lg-1">
+                    <button class="btn btn-default" type="button" ng-click="refreshEditor()">清空</button>
+                  </div> 
+            </form>
+          <hr style="background-color: gray">    
+          <div id="editor" ng-model="new.addNew" ng-hide="inputDate"></div>
+          <hr style="background-color: gray">  
+          <div>
+            <input type="text" class="form-control" ng-model="search" placeholder="搜索通知...">
+          </div>
+          <table class="table">
+            <thead>
+                <tr>
+                  <th>标题</th>
+                  <th style="width: 19%">时间</th>
+                  <th style="width: 8%">操作</th>
+                  <th style="width: 8%"></th>
+                  <th style="width: 8%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="contact in newsList.slice().reverse() | filter:search">
+                  <td>{{contact.title}}</td>
+                  <td>{{contact.date | date: 'yyyy年MM月dd日'}}</td>
+                  <td><a href="/detailsMsg/{{contact._id}}">预览</a></td>
+                  <td><button class="btn btn-primary" ng-click="changeNew(contact._id)">修改</button></td>
+                  <td><button class="btn btn-danger" ng-click="delectNew(contact._id)">删除</button></td>
+                </tr>
+                </tbody>
+          </table>
+        </div>
+      </div>
+      <script>
+        var E = window.wangEditor
+        var editor = new E('#editor')
+        editor.customConfig.menus = [
+        'head',  // 标题
+        'bold',  // 粗体
+        'fontSize',  // 字号
+        'fontName',  // 字体
+        'italic',  // 斜体
+        'underline',  // 下划线
+        'strikeThrough',  // 删除线
+        'foreColor',  // 文字颜色
+        'backColor',  // 背景颜色
+        'link',  // 插入链接
+        'list',  // 列表
+        'justify',  // 对齐方式
+        'quote',  // 引用
+        'emoticon',  // 表情
+        'table',  // 表格
+        'undo',  // 撤销
+        'redo'  // 重复
+        ]
+        editor.create()
+        editor.txt.html('<p>请输入通知内容...</p>')
+      </script>
+  </body>
+</html>

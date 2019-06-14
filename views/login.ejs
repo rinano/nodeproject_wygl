@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>小区物业信息管理</title>
+    <script src="/javascripts/angular.min.js"></script>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/layoutit.css">
+    <style type="text/css">
+      body {
+        margin-left: 10%;
+        margin-right: 10%;
+       
+       background: url("/images/bg.jpg");
+       background-position: center 0; 
+       background-repeat: no-repeat;  
+       background-attachment: fixed; 
+       background-size: cover; 
+       -webkit-background-size: cover;  
+       -o-background-size: cover;  
+       -moz-background-size: cover;  
+       -ms-background-size: cover;
+   
+      }
+      .form-container{
+        max-width: 330px;
+        margin: 0 auto;
+      }
+     </style>
+  </head>
+  <body>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"> 小区物业信息管理系统</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/">首页</a></li>
+                <li class="active"><a href="/login">登录</a></li>
+                <li><a href="/register">注册</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    <div class="container form-container">      
+        <% if (locals.msg){ %>
+          <div class="alert alert-success">
+            <%= msg %>
+          </div>
+          <% } else if (locals.errMsg){ %>
+            <div class="alert alert-danger">
+              <%= errMsg %>
+            </div>
+            <% } %>
+      <form action='/login' method="post" class="form-signin">
+        <h2 class="form-signin-head">登录系统</h2>
+        <div class="form-group">
+          <label for="userid">userid</label>
+          <input type="text" name="userid" id="userid" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="password">password</label>
+          <input type="password" name="password" id="password" class="form-control">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">登录</button>
+          <a href="/register" class="btn btn-link">没有帐号？注册一个</a>
+          <a href="/adminlogin" class="btn btn-link">我是管理员</a>
+        </div>
+      </form>
+      <div class="credits text-center"></div>
+        </div>
+    </div>
+  </body>
+</html>

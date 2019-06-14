@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .container-fluid
+    .row-fluid
+      .span2
+        
+      .span6
+        form.form-horizontal(action="/login" method="post")
+          .control-group
+            label(for="userid") 登录ID
+            .controls  
+            input(type="text" id="userid" name="userid" placeholder="ID")
+          .control-group
+            label(for="userid") 密码
+            .controls
+            input(type="password" id="password" name="password" placeholder="PW")
+          .control-group
+            .controls
+              //input(type="submit" value="登录")
+            button.btn(type="submit") OK
+      .span4
+    p #{name}

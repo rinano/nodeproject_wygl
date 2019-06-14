@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>小区物业信息管理</title>
+      <script src="/javascripts/angular.min.js"></script>
+      <script src="/javascripts/jquery.min.js"></script>
+      <script src="/javascripts/bootstrap.min.js"></script>
+      <script src="/controllers/adminusermsgctrl.js"></script>
+      <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+      <link rel="stylesheet" href="/stylesheets/layoutit.css">
+      <style type="text/css">
+        body {
+          margin-left: 10%;
+          margin-right: 10%;
+         
+         background: url("/images/bg.jpg");
+         background-position: center 0; 
+         background-repeat: no-repeat;  
+         background-attachment: fixed; 
+         background-size: cover; 
+         -webkit-background-size: cover;  
+         -o-background-size: cover;  
+         -moz-background-size: cover;  
+         -ms-background-size: cover;
+     
+        }
+       </style>
+  </head>
+  <body>    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"> 小区物业信息管理系统</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">首页</a></li>
+            <li><a href="/admin">用户工单</a></li>
+            <li class="active"><a href="/viewuser">用户信息</a></li>
+            <li><a href="/indexnews">新闻通知</a></li>
+            <li><a href="/logout">退出</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div ng-app="myApp" ng-controller="viewUser">
+        <div>
+            <form class="form-group">
+              <div class="row">
+                <div class="col-lg-3"></div>
+                  <div class="col-lg-6">
+                      <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" placeholder="输入消息..." ng-model="msg.msg">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="sendMsg()">发送</button>
+                          </span>
+                      </div>
+                  </div>
+                <div class="col-lg-3"></div>  
+            </form>
+          </div>
+      <h2>本小区业主信息</h2>
+      <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-search"></span>
+          <input type="text" class="form-control" ng-model="search" placeholder="输入关键词查找用户...">
+        </div>
+      <table class="table">
+          <thead>
+            <tr>
+              <th>姓名</th>
+              <th>单元号</th>
+              <th>房间号</th>
+              <th>手机号</th>
+              <th>消息</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="contact in userList.slice().reverse() | filter:search">
+              <td>{{contact.name}}</td>
+              <td>{{contact.unit}}</td>
+              <td>{{contact.room}}</td>
+              <td>{{contact.phone}}</td>
+              <td>{{contact.msg}}</td>
+              <td><button class="btn btn-info" ng-click="editMsg(contact.userid)">编辑消息</button></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+  </body>
+</html>

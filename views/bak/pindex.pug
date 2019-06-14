@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  .container-fluid
+    .row-fluid
+      .span2
+        img(src="/images/tableicon.png", alt="242x81")
+      .span4
+        p 业务管理
+      .span1
+        a(href='#!/') index
+      .span1
+        a(href='#!/user') user
+      .span1
+        a(href='#!/') login
+      .span1
+        a(href='#!/') logout
+  .container-fluid
+    .row-fluid
+      .span12
+        .container(ng-app='myApp' ng-controller='AppCtrl')
+          table.table
+            thead
+              tr
+                th NEWS
+                th TIME
+            tbody
+              tr(ng-repeat='contact in newsList')  
+                td {{contact.new}}
+                td {{contact.time}}

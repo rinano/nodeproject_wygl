@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  form(action="/register" method="post")
+    label(for="userid") 登录ID
+    input(type="text" id="userid" name="userid" placeholder="ID")
+    br
+    label(for="userid") 密码
+    input(type="password" id="password" name="password" placeholder="PW")
+    br
+    label(for="userid") 姓名
+    input(type="text" id="name" name="name" placeholder="NAME")
+    br
+    label(for="userid") 单元
+    input(type="text" id="unit" name="unit" placeholder="UNIT")
+    br
+    label(for="userid") 房间号
+    input(type="text" id="room" name="room" placeholder="ROOM")
+    br
+    label(for="userid") 手机
+    input(type="text" id="phone" name="phone" placeholder="PHONE")
+    br
+    input(type="submit" value="注册")

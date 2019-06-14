@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to 
+  form(action="/tset", method="post")
+    input(type="text" name="userid" id="userid")
+    br
+    input(type="submit" value="OK")

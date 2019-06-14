@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="utf-8">
+  <title>小区物业信息管理</title>
+  <script src="/javascripts/angular.min.js"></script>
+  <script src="/javascripts/jquery.min.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+  <script src="/controllers/controllers.js"> </script>
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="/stylesheets/layoutit.css">
+  <style type="text/css">
+   body {
+     margin-left: 10%;
+     margin-right: 10%;
+    
+    background: url("/images/bg.jpg");
+    background-position: center 0; 
+    background-repeat: no-repeat;  
+    background-attachment: fixed; 
+    background-size: cover; 
+    -webkit-background-size: cover;  
+    -o-background-size: cover;  
+    -moz-background-size: cover;  
+    -ms-background-size: cover;
+
+   }
+  </style>
+</head>
+<body>
+  <% switch (n){ 
+    case 1: %>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"> 小区物业信息管理系统</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">首页</a></li>
+          <li><a href="/user">我的工单</a></li>
+          <li><a href="/usermsg">我的信息</a></li>
+          <li><a href="/logout">退出</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="page-header">
+    <h3 class="text-center">欢迎回来， <%= name %></h3>
+  </div>
+    <% break; %>
+    <% case 2: %>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"> 小区物业信息管理系统</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">首页</a></li>
+              <li><a href="/admin">用户工单</a></li>
+              <li><a href="/viewuser">用户信息</a></li>
+              <li><a href="/indexnews">新闻通知</a></li>
+              <li><a href="/logout">退出</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="page-header">
+        <h3 class="text-center">欢迎回来， <%= adminid %></h3>
+      </div>
+    <% break; %>
+    <% case 3: %>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"> 小区物业信息管理系统</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">首页</a></li>
+            <li><a href="/staff">用户工单</a></li>
+            <li><a href="/logout">退出</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="page-header">
+      <h3 class="text-center">欢迎回来， <%= name %></h3>
+    <% break; %>
+    <% default: %>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"> 小区物业信息管理系统</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">首页</a></li>
+            <li><a href="/login">登录</a></li>
+            <li><a href="/register">注册</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <% } %>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel" data-slide-to="1"></li>
+      <li data-target="#carousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="/images/a1.jpg" alt="First slide">
+      </div>
+      <div class="item">
+        <img src="/images/a2.jpg" alt="Second slide">
+      </div>
+      <div class="item">
+        <img src="/images/a3.jpg" alt="Third slide">
+      </div>
+    </div>
+    <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+
+    </a>
+    <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+
+    </a>
+  </div>
+  </div>
+  <div class="col-3"></div>
+  </div>
+</div>
+</div>
+  <div class="container" ng-app="myApp" ng-controller="AppCtrl">
+    <div class="row">
+      <div class="span12">
+        <div class="container" >
+          <table class="table">
+            <thead>
+              <tr>
+                <th>NEWS</th>
+                <th>TIME</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="contact in newsList.slice().reverse()">
+                <td>{{contact.title}}</td>
+                <td>{{contact.date | date:'yyyy年MM月dd日'}}</td>
+                <td><a href="/detailsMsg/{{contact._id}}">查看详情</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
